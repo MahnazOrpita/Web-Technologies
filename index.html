@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Page Title</title>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <style>
+        .container {
+            width: 600px;
+            height: 450px;
+            display: flex;
+            flex-direction: row;
+            border: 2px solid black;
+            margin-top: 20px;
+        }
+        .left {
+            display: flex;
+            flex-direction: column;
+            width: 40%;
+        }
+        .upper-left {
+            height: 60%;
+            background-color: lightblue;
+        }
+        .lower-left {
+            height: 40%;
+            background-color: lightgreen;
+            width: 100%;
+        }
+        .right {
+            width: 60%;
+            background-color: lightcoral;
+            height: 100%;
+        }
+        .title {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">TITLE</div>
+    <div class="container">
+        <div class="left">
+            <div class="upper-left"></div>
+            <div class="lower-left"></div>
+        </div>
+        <div class="right"></div>
+    </div>
+</body>
+</html>
