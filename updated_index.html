@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Page Title</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            flex-direction: column;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            background-color: #006a4e;
+            position: relative;
+        }
+
+        .red-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #f42a41;
+            position: absolute;
+            top: 30%;
+            left: 20%;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            width: 600px;
+            height: 450px;
+            display: flex;
+            border: 2px solid black;
+        }
+
+        .left {
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .upper-left {
+            height: 60%;
+            background-color: lightblue;
+        }
+
+        .lower-left {
+            height: 40%;
+            background-color: lightgreen;
+        }
+
+        .right {
+            width: 60%;
+            background-color: lightcoral;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <div class="red-circle"></div>
+    </div>
+
+    <div class="title">Get Registration</div>
+
+    <div class="container">
+        <div class="left">
+            <div class="upper-left"></div>
+            <div class="lower-left"></div>
+        </div>
+        <div class="right"></div>
+    </div>
+</body>
+</html>
