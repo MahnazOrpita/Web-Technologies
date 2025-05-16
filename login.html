@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registration Page</title>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      padding-top: 30px;
+    }
+
+    .logo {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background-color: #006a4e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+      margin-bottom: 10px;
+    }
+
+    .red-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #f42a41;
+    }
+
+    .container {
+      width: 500px;
+      height: 450px;
+      display: flex;
+      border: 2px solid black;
+      background-color: #fff;
+      box-sizing: border-box;
+    }
+
+    .title {
+      display: none;
+    }
+
+    .left {
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .upper-left {
+      height: 70%;
+      background-color: lightblue;
+      padding: 10px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 5px;
+      overflow-y: auto;
+    }
+
+    .upper-left h2 {
+      font-size: 12px;
+      margin: 0 0 5px 0;
+      text-align: center;
+    }
+
+    .lower-left {
+      height: 30%;
+      background-color: lightgreen;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    .right {
+      width: 60%;
+      background-color: lightcoral;
+    }
+
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .form-container input,
+    .form-container select {
+      padding: 3px;
+      font-size: 9px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 100%;
+    }
+
+    .form-container label {
+      font-weight: bold;
+      font-size: 8px;
+    }
+
+    .form-container button {
+      padding: 7px;
+      font-size: 9px;
+      background-color: #006a4e;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .form-container button:hover {
+      background-color: #004d3e;
+    }
+
+    .gender-options {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .gender-options input {
+      width: 8px;
+      height: 8px;
+    }
+
+    .gender-options label {
+      font-size: 8px;
+    }
+
+    .country-container {
+      margin-top: 0;
+    }
+
+    .terms-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-size: 8px;
+      gap: 5px;
+    }
+
+    .terms-container a {
+      color: blue;
+      text-decoration: underline;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 8px;
+      margin-top: 2px;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Logo directly above the container -->
+  <div class="logo">
+    <div class="red-circle"></div>
+  </div>
+
+  <div class="container">
+    <div class="left">
+      <!-- Registration Form -->
+      <div class="upper-left">
+        <h2>Get Registration</h2>
+        <form class="form-container" id="registration-form" novalidate>
+          <div class="field-group">
+            <label for="full-name">Full Name</label>
+            <input type="text" id="full-name" required />
+            <div class="error-message" id="full-name-error" style="display:none;"></div>
+          </div>
+
+          <div class="field-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" required />
+            <div class="error-message" id="email-error" style="display:none;"></div>
+          </div>
+
+          <div class="field-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" required />
+            <div class="error-message" id="password-error" style="display:none;"></div>
+          </div>
+
+          <div class="field-group">
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-password" required />
+            <div class="error-message" id="confirm-password-error" style="display:none;"></div>
+          </div>
+
+          <div class="field-group">
+            <label for="birth-date">Birth Date</label>
+            <input type="date" id="birth-date" required />
+            <div class="error-message" id="birth-date-error" style="display:none;"></div>
+          </div>
+
+          <div class="field-group">
+            <label>Gender</label>
+            <div class="gender-options">
+              <input type="radio" id="male" name="gender" value="male" />
+              <label for="male">Male</label>
+              <input type="radio" id="female" name="gender" value="female" />
+              <label for="female">Female</label>
+            </div>
+            <div class="error-message" id="gender-error" style="display: none;"></div>
+          </div>
+
+          <div class="field-group country-container">
+            <label for="country">Country</label>
+            <select id="country" required>
+              <option value="">Select your country</option>
+              <option value="Bangladesh">Bangladesh</option>
+              <option value="USA">USA</option>
+              <option value="India">India</option>
+            </select>
+            <div class="error-message" id="country-error" style="display:none;"></div>
+          </div>
+
+          <div class="terms-container">
+            <input type="checkbox" id="terms" />
+            <label for="terms">I agree to <a href="#">Terms and Conditions</a></label>
+          </div>
+          <div class="error-message" id="terms-error" style="display: none;"></div>
+
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+
+      <!-- Login Form -->
+      <div class="lower-left">
+        <form id="login-form" class="form-container">
+          <div class="field-group">
+            <label for="login-email">Login Email</label>
+            <input type="email" id="login-email" required />
+          </div>
+          <div class="field-group">
+            <label for="login-password">Login Password</label>
+            <input type="password" id="login-password" required />
+          </div>
+          <button type="submit">Login</button>
+          <div class="error-message" id="login-error" style="display: none;"></div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Right Placeholder -->
+    <div class="right"></div>
+  </div>
+
+  <script>
+    let registeredEmail = localStorage.getItem("email") || '';
+    let registeredPassword = localStorage.getItem("password") || '';
+
+    function showError(elementId, message) {
+      const el = document.getElementById(elementId);
+      if (el) {
+        el.style.display = 'block';
+        el.textContent = message;
+      }
+    }
+
+    function clearError(elementId) {
+      const el = document.getElementById(elementId);
+      if (el) {
+        el.style.display = 'none';
+        el.textContent = '';
+      }
+    }
+
+    function isValidName(name) {
+      // Only letters, dots, hyphens, spaces and length > 1
+      const namePattern = /^[A-Za-z.\-\s]{2,}$/;
+      return namePattern.test(name.trim());
+    }
+
+    function isValidEmail(email) {
+      const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      return emailPattern.test(email.trim());
+    }
+
+    function calculateAge(birthDate) {
+      const today = new Date();
+      const birth = new Date(birthDate);
+      let age = today.getFullYear() - birth.getFullYear();
+      const monthDiff = today.getMonth() - birth.getMonth();
+      if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
+        age--;
+      }
+      return age;
+    }
+
+    document.getElementById('registration-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      let valid = true;
+
+      const fullName = document.getElementById('full-name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const confirmPassword = document.getElementById('confirm-password').value.trim();
+      const birthDate = document.getElementById('birth-date').value;
+      const genderMale = document.getElementById('male').checked;
+      const genderFemale = document.getElementById('female').checked;
+      const country = document.getElementById('country').value;
+      const termsChecked = document.getElementById('terms').checked;
+
+      // Full Name validation
+      if (!isValidName(fullName)) {
+        showError('full-name-error', 'Name must be at least 2 characters and contain only letters, dots, hyphens, and spaces.');
+        valid = false;
+      } else {
+        clearError('full-name-error');
+      }
+
+      // Email validation
+      if (!isValidEmail(email)) {
+        showError('email-error', 'Please enter a valid email address.');
+        valid = false;
+      } else {
+        clearError('email-error');
+      }
+
+      // Password length validation
+      if (password.length !== 8) {
+        showError('password-error', 'Password must be exactly 8 characters.');
+        valid = false;
+      } else {
+        clearError('password-error');
+      }
+
+      // Confirm password match validation
+      if (confirmPassword !== password) {
+        showError('confirm-password-error', 'Passwords do not match.');
+        valid = false;
+      } else {
+        clearError('confirm-password-error');
+      }
+
+      // Birth date and age validation
+      if (!birthDate) {
+        showError('birth-date-error', 'Birth date is required.');
+        valid = false;
+      } else {
+        const age = calculateAge(birthDate);
+        if (age < 18) {
+          showError('birth-date-error', 'You must be at least 18 years old.');
+          valid = false;
+        } else {
+          clearError('birth-date-error');
+        }
+      }
+
+      // Gender validation
+      if (!genderMale && !genderFemale) {
+        showError('gender-error', 'Please select your gender.');
+        valid = false;
+      } else {
+        clearError('gender-error');
+      }
+
+      // Country validation
+      if (!country) {
+        showError('country-error', 'Please select your country.');
+        valid = false;
+      } else {
+        clearError('country-error');
+      }
+
+      // Terms checkbox validation
+      if (!termsChecked) {
+        showError('terms-error', 'You must agree to the terms and conditions.');
+        valid = false;
+      } else {
+        clearError('terms-error');
+      }
+
+      if (!valid) return;
+
+      // Save to localStorage
+      localStorage.setItem("email", email);
+      localStorage.setItem("password", password);
+      registeredEmail = email;
+      registeredPassword = password;
+
+      alert('Registration successful! You can now log in below.');
+      document.getElementById('registration-form').reset();
+    });
+
+    document.getElementById('login-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const loginEmail = document.getElementById('login-email').value.trim();
+      const loginPassword = document.getElementById('login-password').value.trim();
+      const loginError = document.getElementById('login-error');
+
+      if (loginEmail === registeredEmail && loginPassword === registeredPassword) {
+        loginError.style.display = 'none';
+        alert('Login successful!');
+        document.getElementById('login-form').reset();
+      } else {
+        loginError.style.display = 'block';
+        loginError.textContent = 'Incorrect email or password.';
+      }
+    });
+  </script>
+
+</body>
+</html>
+
