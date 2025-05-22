@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registration Page</title>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      padding-top: 30px;
+    }
+
+    .logo {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background-color: #006a4e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+      margin-bottom: 10px;
+    }
+
+    .red-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #f42a41;
+    }
+
+    .container {
+      width: 500px;
+      height: 620px;
+      display: flex;
+      border: 2px solid black;
+      background-color: #fff;
+      box-sizing: border-box;
+    }
+
+    .title {
+      display: none;
+    }
+
+    .left {
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .upper-left {
+      height: 75%;
+      background-color: lightblue;
+      padding: 10px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 5px;
+      /* overflow-y: auto; */ /* Removed scrolling */
+    }
+
+    .upper-left h2 {
+      font-size: 12px;
+      margin: 0 0 5px 0;
+      text-align: center;
+    }
+
+    .lower-left {
+      height: 25%;
+      background-color: lightgreen;
+      padding: 10px 5px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .lower-left .form-container {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .lower-left .form-container label {
+      font-size: 8px;
+    }
+
+    .lower-left .form-container input {
+      padding: 3px;
+      font-size: 8px;
+      border: 3px solid #ccc;
+      border-radius: 5px;
+      width: 95%;
+    }
+
+    .lower-left .form-container button {
+      padding: 5px;
+      font-size: 8px;
+      background-color: #006a4e;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      width: 98%;
+    }
+
+    .lower-left .form-container button:hover {
+      background-color: #004d3e;
+    }
+
+    .right {
+      width: 60%;
+      background-color: lightcoral;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .form-container input,
+    .form-container select {
+      padding: 3px;
+      font-size: 9px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 100%;
+    }
+
+    .form-container label {
+      font-weight: bold;
+      font-size: 8px;
+    }
+
+    .form-container button {
+      padding: 7px;
+      font-size: 9px;
+      background-color: #006a4e;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .form-container button:hover {
+      background-color: #004d3e;
+    }
+
+    .gender-options {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .gender-options input {
+      width: 8px;
+      height: 8px;
+    }
+
+    .gender-options label {
+      font-size: 8px;
+    }
+
+    .country-container {
+      margin-top: 0;
+    }
+
+    .terms-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-size: 8px;
+      gap: 5px;
+    }
+
+    .terms-container a {
+      color: blue;
+      text-decoration: underline;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 8px;
+      margin-top: 2px;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    table {
+      width: 100%;
+      font-size: 10px;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      border: 1px solid #000;
+      padding: 5px;
+      text-align: left;
+    }
+
+    .aqi-form input {
+      font-size: 9px;
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="logo">
+    <div class="red-circle"></div>
+  </div>
+
+  <div class="container">
+    <div class="left">
+      <!-- Registration Form -->
+      <div class="upper-left">
+        <h2>Get Registration</h2>
+        <form class="form-container" id="registration-form" novalidate>
+          <div class="field-group">
+            <label for="full-name">Full Name</label>
+            <input type="text" id="full-name" required />
+            <div class="error-message" id="full-name-error" style="display:none;"></div>
+          </div>
+
+          <div class="field-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" required />
+            <div class="error-message" id="email-error" style="display:none;"></div>
+          </div>
+
+          <div class="field-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" required />
+            <div class="error-message" id="password-error" style="display:none;"></div>
+          </div>
+
+          <div class="field-group">
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-password" required />
+            <div class="error-message" id="confirm-password-error" style="display:none;"></div>
+          </div>
+
+          <div class="field-group">
+            <label for="birth-date">Birth Date</label>
+            <input type="date" id="birth-date" required />
+            <div class="error-message" id="birth-date-error" style="display:none;"></div>
+          </div>
+
+          <div class="field-group">
+            <label>Gender</label>
+            <div class="gender-options">
+              <input type="radio" id="male" name="gender" value="male" />
+              <label for="male">Male</label>
+              <input type="radio" id="female" name="gender" value="female" />
+              <label for="female">Female</label>
+            </div>
+            <div class="error-message" id="gender-error" style="display: none;"></div>
+          </div>
+
+          <div class="field-group country-container">
+            <label for="country">Country</label>
+            <select id="country" required>
+              <option value="">Select your country</option>
+              <option value="Bangladesh">Bangladesh</option>
+              <option value="USA">USA</option>
+              <option value="India">India</option>
+            </select>
+            <div class="error-message" id="country-error" style="display:none;"></div>
+          </div>
+
+          <div class="field-group">
+            <label for="bg-color">Choose Background Color</label>
+            <input type="color" id="bg-color" />
+          </div>
+
+          <div class="terms-container">
+            <input type="checkbox" id="terms" />
+            <label for="terms">I agree to <a href="#">Terms and Conditions</a></label>
+          </div>
+          <div class="error-message" id="terms-error" style="display: none;"></div>
+
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+
+      <!-- Login Form -->
+      <div class="lower-left">
+        <form id="login-form" class="form-container">
+          <div class="field-group">
+            <label for="login-email">Login Email</label>
+            <input type="email" id="login-email" required />
+          </div>
+          <div class="field-group">
+            <label for="login-password">Login Password</label>
+            <input type="password" id="login-password" required />
+          </div>
+          <button type="submit">Login</button>
+          <div class="error-message" id="login-error" style="display: none;"></div>
+        </form>
+      </div>
+    </div>
+
+    <!-- AQI Table Input and Display -->
+    <div class="right">
+      <form class="aqi-form" id="aqi-form">
+        <input type="text" id="city" placeholder="City" required />
+        <input type="number" id="aqi" placeholder="AQI" required />
+        <button type="submit">Add AQI</button>
+      </form>
+      <table id="aqi-table">
+        <thead>
+          <tr>
+            <th>City</th>
+            <th>AQI</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    let registeredEmail = localStorage.getItem("email") || '';
+    let registeredPassword = localStorage.getItem("password") || '';
+
+    function showError(id, msg) {
+      const el = document.getElementById(id);
+      el.style.display = 'block';
+      el.textContent = msg;
+    }
+
+    function clearError(id) {
+      const el = document.getElementById(id);
+      el.style.display = 'none';
+      el.textContent = '';
+    }
+
+    function isValidName(name) {
+      const pattern = /^[A-Za-z.\-\s]{2,}$/;
+      return pattern.test(name.trim());
+    }
+
+    function isValidEmail(email) {
+      const pattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      return pattern.test(email.trim());
+    }
+
+    function calculateAge(birthDate) {
+      const today = new Date();
+      const birth = new Date(birthDate);
+      let age = today.getFullYear() - birth.getFullYear();
+      if (
+        today.getMonth() < birth.getMonth() ||
+        (today.getMonth() === birth.getMonth() && today.getDate() < birth.getDate())
+      ) age--;
+      return age;
+    }
+
+    document.getElementById('registration-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      let valid = true;
+
+      const fullName = document.getElementById('full-name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const confirmPassword = document.getElementById('confirm-password').value.trim();
+      const birthDate = document.getElementById('birth-date').value;
+      const gender = document.querySelector('input[name="gender"]:checked');
+      const country = document.getElementById('country').value;
+      const termsChecked = document.getElementById('terms').checked;
+
+      if (!isValidName(fullName)) {
+        showError('full-name-error', 'Invalid name.');
+        valid = false;
+      } else clearError('full-name-error');
+
+      if (!isValidEmail(email)) {
+        showError('email-error', 'Invalid email.');
+        valid = false;
+      } else clearError('email-error');
+
+      if (password.length !== 8) {
+        showError('password-error', 'Password must be 8 characters.');
+        valid = false;
+      } else clearError('password-error');
+
+      if (password !== confirmPassword) {
+        showError('confirm-password-error', 'Passwords do not match.');
+        valid = false;
+      } else clearError('confirm-password-error');
+
+      if (!birthDate || calculateAge(birthDate) < 18) {
+        showError('birth-date-error', 'Must be at least 18.');
+        valid = false;
+      } else clearError('birth-date-error');
+
+      if (!gender) {
+        showError('gender-error', 'Please select gender.');
+        valid = false;
+      } else clearError('gender-error');
+
+      if (!country) {
+        showError('country-error', 'Please select country.');
+        valid = false;
+      } else clearError('country-error');
+
+      if (!termsChecked) {
+        showError('terms-error', 'Must agree to terms.');
+        valid = false;
+      } else clearError('terms-error');
+
+      if (!valid) return;
+
+      localStorage.setItem("email", email);
+      localStorage.setItem("password", password);
+      registeredEmail = email;
+      registeredPassword = password;
+
+      alert('Registration successful!');
+      document.getElementById('registration-form').reset();
+    });
+
+    document.getElementById('login-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const email = document.getElementById('login-email').value.trim();
+      const password = document.getElementById('login-password').value.trim();
+      const error = document.getElementById('login-error');
+
+      if (email === registeredEmail && password === registeredPassword) {
+        error.style.display = 'none';
+        alert('Login successful!');
+        document.getElementById('login-form').reset();
+      } else {
+        error.style.display = 'block';
+        error.textContent = 'Incorrect email or password.';
+      }
+    });
+
+    document.getElementById('aqi-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const city = document.getElementById('city').value.trim();
+      const aqi = document.getElementById('aqi').value.trim();
+      if (!city || !aqi) return;
+
+      const table = document.querySelector('#aqi-table tbody');
+      const row = document.createElement('tr');
+      row.innerHTML = `<td>${city}</td><td>${aqi}</td>`;
+      table.appendChild(row);
+
+      this.reset();
+    });
+
+    document.getElementById('bg-color').addEventListener('input', function () {
+      document.querySelector('.upper-left').style.backgroundColor = this.value;
+    });
+  </script>
+</body>
+</html>
